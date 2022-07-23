@@ -9,7 +9,7 @@ using namespace std;
 int main(){
 
 
-    int n,m;
+    int n,m;cin>>n>>m;
     vector<vector<pair<int,int>>>adj(n+1);
 
     while (m--)
@@ -23,7 +23,7 @@ int main(){
     for(int i=0;i<=n;i++)dist[i] = INT_MAX;
 
     dist[1]=0;
-    priority_queue<pair<int,int>>pq;
+    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
     vector<int>vis(n+1,0);
     pq.push({0,1});
 
@@ -35,6 +35,9 @@ int main(){
 
         int v = node.second;
         int w = node.first;
+
+        if(w!=dist[v])continue;
+
         vis[v]=1;
 
         int a = adj[v].size();

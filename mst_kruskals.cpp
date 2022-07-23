@@ -10,6 +10,9 @@ int findParent(int u,vector<int>&parent){
 
 void unionSet(int u,int v,vector<int>&parent,vector<int>&rank){
 
+    u = findParent(u,parent);
+    v = findParent(v,parent);
+
     if(rank[u]>rank[v]){
         parent[v]=u;
     }
@@ -25,7 +28,7 @@ void unionSet(int u,int v,vector<int>&parent,vector<int>&rank){
 
 int main (){
 
-    int n,m;
+    int n,m;cin>>n>>m;
 
     vector<pair<int,pair<int,int>>>edges;
 
@@ -57,6 +60,8 @@ int main (){
         }
 
     }
+
+    cout<<ans<<endl;
 
 
 
